@@ -1,0 +1,47 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "30.0.1"
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //alipay https://opendocs.alipay.com/open/204/105296
+    implementation(name: 'alipaysdk-15.8.00.201112210139', ext: 'aar')
+    //wechat https://developers.weixin.qq.com/doc/oplatform/Mobile_App/Access_Guide/Android.html
+    api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}
+
+publish {
+    userOrg = 'hubertwu'//bintray.com用户名
+    groupId = 'cn.bytell'//项目路径
+    artifactId = 'paysdk'//项目名称
+    publishVersion = '1.0.0'//版本号
+    desc = '常用的第三方SDK二次封装'
+    website = 'https://github.com/CoderHubert'
+}
