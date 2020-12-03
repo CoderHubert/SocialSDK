@@ -28,8 +28,8 @@ public class WXPay implements Pay {
 
     /**
      * 调用接口前必须初始化
-     * @param context
-     * @param wxAppId
+     * @param context Activity
+     * @param wxAppId 微信ID
      */
     public static void init(Context context, String wxAppId) {
         if(mWXPay == null) {
