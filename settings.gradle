@@ -1,3 +1,4 @@
+include ':adsdk'
 rootProject.name='SocialSDK'
 include ':app'
 include ':paysdk'
